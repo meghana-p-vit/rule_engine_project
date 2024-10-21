@@ -1,15 +1,17 @@
 from flask import Flask, request, jsonify, render_template
-from .rule_engine import create_rule, evaluate_rule, combine_rules
-from .ast_helpers import Node
 from flask_cors import CORS
+import os
+from rule_engine import create_rule, evaluate_rule, combine_rules
+from ast_helpers import Node
 
-app = Flask(__name__, template_folder='app/templates')
+app = Flask(__name__, template_folder='templates') # Simplified, Flask automatically looks for `templates/`
 CORS(app)
 
 
 # Route to serve the HTML UI
 @app.route('/')
 def index():
+    print("Current working directory:", os.getcwd())
     return render_template('index.html')
 
 

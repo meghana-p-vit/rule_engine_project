@@ -6,7 +6,7 @@ def get_db_connection():
         dbname="rule_engine_db",
         user="postgres",
         password="Megha*2904",
-        host="localhost",
+        host="db",
         port="5432"
     )
     return conn
