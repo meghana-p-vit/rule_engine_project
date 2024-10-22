@@ -2,7 +2,8 @@ from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import os
 from .rule_engine import create_rule, evaluate_rule, combine_rules
-from ast_helpers import Node
+from .ast_helpers import Node, create_ast_from_rule, evaluate_ast, combine_ast
+
 
 app = Flask(__name__, template_folder='templates') # Simplified, Flask automatically looks for `templates/`
 CORS(app)
