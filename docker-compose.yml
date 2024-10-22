@@ -11,7 +11,7 @@ services:
       - ./app:/app
     environment:
       FLASK_ENV: development
-    working_dir: /app/app  # Set the working directory to the app folder
+    working_dir: /app  # Set the working directory to the app folder
     command: ["gunicorn", "--bind", "0.0.0.0:80", "api:app"]  # Update to call app from api.py
 
   db:

@@ -6,14 +6,13 @@ RUN apt-get update && \
     apt-get clean
 
 # Set the working directory
-WORKDIR /app/app
+WORKDIR /app
 
 # Set Python Path
 ENV PYTHONPATH=/app
 
 # Copy the requirements file
 COPY requirements.txt requirements.txt
-
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
@@ -22,4 +21,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Command to run the application
-CMD ["gunicorn", "--bind", "0.0.0.0:80", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:80", "api:app"]
