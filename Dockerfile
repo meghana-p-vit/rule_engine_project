@@ -1,23 +1,24 @@
 FROM python:3.9-slim
 
-# Install PostgreSQL development packages
+# Install PostgreSQL development packages and clean up after
 RUN apt-get update && \
     apt-get install -y libpq-dev gcc && \
-    apt-get clean
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-# Set the working directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Set Python Path
+# Set Python Path environment variable
 ENV PYTHONPATH=/app
 
 # Copy the requirements file
-COPY requirements.txt requirements.txt
+COPY requirements.txt .
 
-# Install dependencies
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the application code
+# Copy the rest of the application code
 COPY . .
 
 # Command to run the application

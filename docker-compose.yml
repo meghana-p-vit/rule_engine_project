@@ -6,23 +6,23 @@ services:
       context: .  # Specifies the context to use for building the image
       dockerfile: Dockerfile  # Specifies the Dockerfile to use
     ports:
-      - "8080:80"  # Use this if port 80 is still busy
+      - "8080:80"  # Expose port 8080 on the host, mapped to port 80 in the container
     volumes:
-      - ./app:/app
+      - ./app:/app  # Mounts the app folder from your local machine into the container
     environment:
-      FLASK_ENV: development
-    working_dir: /app  # Set the working directory to the app folder
-    command: ["gunicorn", "--bind", "0.0.0.0:80", "api:app"]  # Update to call app from api.py
+      FLASK_ENV: development  # Ensures the Flask environment is set to development
+    working_dir: /app  # Set the working directory inside the container to /app
+    command: ["gunicorn", "--bind", "0.0.0.0:80", "api:app"]  # Runs the app using gunicorn from app/api.py
 
   db:
     image: postgres:latest
-    restart: always
+    restart: always  # Ensures the db service always restarts if it fails
     environment:
-      POSTGRES_DB: rule_engine_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Megha*2904
+      POSTGRES_DB: rule_engine_db  # Sets the database name
+      POSTGRES_USER: postgres  # Sets the PostgreSQL user
+      POSTGRES_PASSWORD: Megha*2904  # Sets the PostgreSQL password
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data  # Stores Postgres data persistently
 
 volumes:
-  postgres_data:
+  postgres_data:  # Named volume for PostgreSQL data persistence
