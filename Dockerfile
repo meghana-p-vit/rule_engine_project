@@ -12,7 +12,8 @@ WORKDIR /app/app
 ENV PYTHONPATH=/app
 
 # Copy the requirements file
-COPY requirements.txt .
+COPY requirements.txt requirements.txt
+
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
