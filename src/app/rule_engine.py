@@ -1,5 +1,5 @@
-from ast_helpers import Node, create_ast_from_rule, evaluate_ast, combine_ast
-from database import save_rule_to_db
+from .ast_helpers import Node, create_ast_from_rule, evaluate_ast, combine_ast
+from .database import save_rule_to_db
 
 def create_rule(rule_string):
     """Create a rule from a rule string and store it in the database"""
