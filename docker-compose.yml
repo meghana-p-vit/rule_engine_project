@@ -3,12 +3,12 @@ version: '3.8'
 services:
   web:
     build:
-      context: .  # Specifies the context to use for building the image
+      context: ./src # Specifies the context to use for building the image
       dockerfile: Dockerfile  # Specifies the Dockerfile to use
     ports:
       - "8080:80"  # Expose port 8080 on the host, mapped to port 80 in the container
     volumes:
-      - ./app:/app  # Mounts the app folder from your local machine into the container
+      - ./src/app:/app  # Mounts the app folder from your local machine into the container
     environment:
       FLASK_ENV: development  # Ensures the Flask environment is set to development
     working_dir: /app  # Set the working directory inside the container to /app
