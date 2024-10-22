@@ -165,7 +165,7 @@
         };
 
         try {
-        const response = await fetch("http://localhost:8080/evaluate_rule", {  // Use the correct API URL
+        const response = await fetch("/evaluate_rule", {   // Use the correct API URL
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
