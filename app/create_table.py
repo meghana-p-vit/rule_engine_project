@@ -6,7 +6,7 @@ def create_rules_table():
             dbname="rule_engine_db",
             user="postgres",
             password="Megha*2904",
-            host="db",
+            host="localhost",
             port="5432"
         )
         cursor = conn.cursor()

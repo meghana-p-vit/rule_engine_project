@@ -6,7 +6,7 @@ RUN apt-get update && \
     apt-get clean
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /app/app
 
 # Set Python Path
 ENV PYTHONPATH=/app
@@ -21,4 +21,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Command to run the application
-CMD ["gunicorn", "--bind", "0.0.0.0:80", "app.api:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:80", "app:app"]

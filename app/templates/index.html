@@ -164,7 +164,8 @@
             }
         };
 
-        const response = await fetch("http://127.0.0.1:5000/evaluate_rule", {
+        try {
+        const response = await fetch("http://localhost:8080/evaluate_rule", {  // Use the correct API URL
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -173,16 +174,19 @@
         });
 
         const result = await response.json();
+        console.log("Evaluation Result:", result);
 
         const outputSection = document.getElementById("outputSection");
-        const resultOutput = document.getElementById("resultOutput");
         const resultText = result.result ? "✅ Evaluation Result: Passed" : "❌ Evaluation Result: Failed";
         const resultIcon = result.result ? "✔️" : "❌";
 
         document.querySelector(".result").textContent = resultText;
         document.getElementById("resultIcon").textContent = resultIcon;
         outputSection.style.display = "block";
+    } catch (error) {
+        console.error("Error during evaluation:", error);
     }
+}
 </script>
 
 </body>
