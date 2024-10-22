@@ -12,7 +12,7 @@ services:
     environment:
       FLASK_ENV: development  # Ensures the Flask environment is set to development
     working_dir: /app  # Set the working directory inside the container to /app
-    command: ["gunicorn", "--bind", "0.0.0.0:80", "api:app"]  # Runs the app using gunicorn from app/api.py
+    command: ["gunicorn", "--bind", "0.0.0.0:80", "app.api:app"]  # Runs the app using gunicorn from app/api.py
 
   db:
     image: postgres:latest

@@ -22,5 +22,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Command to run the application
-CMD ["gunicorn", "--workers", "4", "--bind", "0.0.0.0:80", "api:app"]
+CMD ["gunicorn", "--workers", "4", "--bind", "0.0.0.0:80", "app.api:app"]
 
